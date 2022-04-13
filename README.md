@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Timeline App
+
+This is a create React application with Typescript that displays a Timeline of events by order of occurance, bottom to top. On Desktop, the events are to be staggered inbetween two branches, whereas on mobile they would collapse to a single branch.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Getting Started with Timeline App
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs the neccessary dependancies to run the app
 
 ### `npm start`
 

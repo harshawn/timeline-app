@@ -1,0 +1,141 @@
+.timeline__event {
+  flex-direction: row-reverse;
+  display: flex;
+  position: relative;
+  align-items: center;
+  transform-origin: left;
+
+  &--active {
+    animation: 0.5s slideIn ease;
+  }
+
+  &:not(:first-child) {
+    animation: 0.5s flipEvent ease;
+  }
+
+  &::before {
+    background: #295988;
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 2px;
+    z-index: 0;
+    left: 10px;
+  }
+
+  &__content {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin: 10px;
+    display: flex;
+    box-shadow: 0 0 10px 4px #1f2229;
+    border-radius: 20px;
+    background-color: #484848;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      h3 {
+        font-size: 1em;
+        margin: 0;
+      }
+    }
+
+    &__description {
+      p {
+        font-size: 0.95em;
+        text-align: left;
+        margin: 10px;
+      }
+    }
+
+    &__time {
+      display: flex;
+      align-items: baseline;
+      margin: 0 10px;
+
+      &__text {
+        font-size: 0.9em;
+        padding: 10px;
+        background: #2e2e2e;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  &__point {
+    z-index: 1;
+
+    &__icon {
+      box-sizing: border-box;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 5px;
+      border-radius: 500px;
+      vertical-align: middle;
+      background: #1e87f0;
+      color: #fff;
+      font-size: 0.875rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    width: 50%;
+
+    // events on the right
+    &:nth-child(odd) {
+      align-self: flex-end;
+      margin-right: 11px;
+
+      &::before {
+        left: 10px;
+      }
+    }
+
+    // events on the left
+    &:nth-child(even) {
+      align-self: flex-start;
+      flex-direction: row;
+      margin-left: 11px;
+      transform-origin: right;
+
+      &::before {
+        left: auto;
+        right: 10px;
+      }
+
+      .timeline__event__content {
+        flex-direction: row-reverse;
+
+        &__description p {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flipEvent {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
